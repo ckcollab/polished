@@ -4,12 +4,16 @@ from setuptools import setup
 try:
     with open('README.md') as readme:
         long_description = readme.read()
-except IOError, ImportError:
+except (IOError, ImportError):
     long_description = ''
 
+
+# Depends on
+# pip install git+https://github.com/adamn/python-webkit2png.git@6488a1fbd06d5479f8592af47acc73834647e837
+
 setup(
-    name="polish",
-    py_modules=["polish"],
+    name="polished",
+    py_modules=["polished"],
     version="0.0.1",
     author="Eric Carmichael",
     author_email="eric@ckcollab.com",
@@ -17,7 +21,7 @@ setup(
     long_description=long_description,
     license="MIT",
     keywords="link checker",
-    url="https://github.com/ckcollab/polish",
+    url="https://github.com/ckcollab/polished",
     classifiers=[
         'Intended Audience :: Developers',
         'Natural Language :: English',
