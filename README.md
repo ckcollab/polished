@@ -1,7 +1,7 @@
 polished
 ========
 
-<p align="center">
+<p align="center" markdown="1">
 [![Polished example video](http://img.youtube.com/vi/yBTDiGhJjlo/0.jpg)](http://www.youtube.com/watch?v=yBTDiGhJjlo)
 </p>
 
