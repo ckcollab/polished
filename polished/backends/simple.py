@@ -19,7 +19,6 @@ class SimpleBackend(object):
         pass
 
     def take_screenshot(self, url):
-        #screenshot = subprocess.call(["webkit2png", url, "-F", "-o", "polished"])
         screenshot = get_screen_shot(
             url=url,
             filename="%05d.polished.png" % self.SCREENSHOT_COUNT,
@@ -61,7 +60,7 @@ class SimpleBackend(object):
 
 
     def get_screenshot(self, sha):
-        checkout = subprocess.call(['git', 'checkout', sha])
+        subprocess.call(['git', 'checkout', sha])
 
         try:
             self.prepare()
@@ -78,11 +77,6 @@ class SimpleBackend(object):
             "-i", "polished/*.png",
             "polished/output.mp4"
         ])
-
-    def _cmd(self, command):
-        p = subprocess.Popen(command, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
-        (output, _) = p.communicate(input='')
-        return output
 
     def execute(self, url=None):
         if url != None:

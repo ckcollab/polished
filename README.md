@@ -14,18 +14,35 @@ Getting started
 
 THIS ONLY WORKS ON MAC!
 
-### Requirements
+### Install
+
+**Requirements**
 
 1. NodeJS
 2. PhantomJS
 3. ImageMagick
 4. ffmpeg
 
-### Install
+**Install**
 
 ```
 pip install polished
 ```
+
+### Usage
+
+For a static website with no .html generation needed and `index.html` is in the same dir:
+
+`polish`
+
+For a static website with `index.html` in another location
+
+`polish "some/path/to/index.html"`
+
+For a pelican blog:
+
+`polish "output/index.html" --backend polished.backends.pelican.PelicanBackend`
+
 
 ### Configuring behavior
 
