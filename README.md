@@ -14,7 +14,7 @@ Once you've installed polished, it works like this:
 
 1. Fires up selected backend (for example, PelicanBackend if you use the [Pelican]() blog site generator)
 2. Get the history of your git repo
-3. Traverse that history, prepare the page and screen cap it
+3. Traverse that history, preparing each page and finally screen cap it
 
 
 Getting started
