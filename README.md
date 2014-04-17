@@ -3,10 +3,17 @@ polished
 
 [![Polished example video](http://img.youtube.com/vi/yBTDiGhJjlo/0.jpg)](http://www.youtube.com/watch?v=yBTDiGhJjlo)
 
-The goal of polished is to show the awesome progression and amount of tweaks that go into any website. My resume
+The goal of polished is to show the awesome progression and amount of tweaks that go into any website. My [resume](http://ericcarmichael.com)
 is a good example, dozens of hours of work and tweaking to come up with this pretty basic final product. Showing that
 blood, sweat and hilarious tears in between should be pretty entertaining. Watch pages undulate, stretch, break,
 grow, and shrink into place.
+
+## How does it work?
+
+Once you've installed polished, it works like this:
+1. Fires up selected backend (for example, PelicanBackend if you use the [Pelican]() blog site generator)
+2. Get the history of your git repo
+3. Traverse that history, prepare the page and screen cap it
 
 
 Getting started
