@@ -8,7 +8,7 @@ is a good example, dozens of hours of work and tweaking to come up with this pre
 blood, sweat and hilarious tears in between should be pretty entertaining. Watch pages undulate, stretch, break,
 grow, and shrink into place.
 
-## How does it work?
+### How does it work?
 
 Once you've installed polished, it works like this:
 1. Fires up selected backend (for example, PelicanBackend if you use the [Pelican]() blog site generator)
