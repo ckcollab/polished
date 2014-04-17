@@ -20,6 +20,7 @@ import os
 import subprocess
 
 from selenium import webdriver
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 
 abspath = lambda *p: os.path.abspath(os.path.join(*p))
@@ -46,7 +47,11 @@ def execute_command(command):
 
 def do_screen_capturing(url, screen_path, width, height):
     print "Capturing screen.."
-    driver = webdriver.PhantomJS(service_log_path="/dev/null")
+    desired_capabilities = dict(DesiredCapabilities.PHANTOMJS)
+    desired_capabilities["phantomjs.page.settings.userAgent"] = (
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.97 Safari/537.11"
+    )
+    driver = webdriver.PhantomJS(service_log_path="/dev/null", desired_capabilities=desired_capabilities)
     # it save service log file in same directory
     # if you want to have log file stored else where
     # initialize the webdriver.PhantomJS() as

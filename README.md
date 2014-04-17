@@ -39,7 +39,7 @@ without any steps needed to generate the page
 'polished.backends.django'
 ```
 
-Generally, on a simple website these backends will probably take care of you, however you may have to
+Generally, on a simple website these backends will care of you, however you may have to
 inherit them and add custom behavior
 
 ```python
@@ -58,6 +58,28 @@ class SomeWeirdBehaviorRequired(polished.backends.pelican):
         '''
         pass
 ```
+
+
+@polish_between_shas("sha", "sha")
+@polish_between_images(1, 3)
+@polish_sha("asfd")
+@polish_image(1)
+@polish_after_sha("asdf")
+@polish_after_image(1)
+
+
+@polish(between_shas=("sha1", "sha2"))
+@polish(between_images=(1, 3))
+@polish(image=1)
+@polish(sha="sha")
+
+
+@skip(between_shas=("sha1", "sha2"))
+@skip(between_images=(1, 3))
+@skip(image=1)
+@skip(sha="sha")
+
+
 
 
 Settings
