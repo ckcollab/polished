@@ -12,14 +12,13 @@ Getting started
 
 THIS ONLY WORKS ON MAC!
 
+### Requirements
+
+1. NodeJS
+2. PhantomJS
+3. ImageMagick
+
 ### Install
-
-Install PhantomJS
-```
-npm install -g phantomjs
-```
-
-Install imageMagick
 
 ```
 pip install polished

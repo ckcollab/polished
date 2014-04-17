@@ -1,6 +1,7 @@
 import subprocess
 
-from polished.screenshot import get_screen_shot
+from .helpers.screenshot import get_screen_shot
+from .helpers.timeout import TimeoutError
 
 
 
@@ -12,12 +13,20 @@ class SimpleBackend(object):
     and such.
     '''
     URL = 'http://localhost:8000/'
+    SCREENSHOT_COUNT = 0
 
     def prepare(self):
         pass
 
-    def take_screenshot(url, self):
-        screenshot = subprocess.call(["webkit2png", url, "-F", "-o", "polished"])
+    def take_screenshot(self, url):
+        #screenshot = subprocess.call(["webkit2png", url, "-F", "-o", "polished"])
+        screenshot = get_screen_shot(
+            url=url,
+            filename="%05d.polished.png" % self.SCREENSHOT_COUNT,
+            path="polished/"
+        )
+
+        self.SCREENSHOT_COUNT = self.SCREENSHOT_COUNT + 1
 
     def cleanup(self):
         '''
@@ -30,7 +39,7 @@ class SimpleBackend(object):
         # be sure to strip leading \n!
         shas = sha_list_string.strip().split('\n')
 
-        for sha in shas:
+        for sha in reversed(shas):
             yield sha
 
 
@@ -52,11 +61,17 @@ class SimpleBackend(object):
 
 
     def get_screenshot(self, sha):
-        checkout = subprocess.call('git', 'checkout', sha)
+        checkout = subprocess.call(['git', 'checkout', sha])
 
-        self.prepare()
-        self.take_screenshot(self.URL)
-        self.cleanup()
+        try:
+            self.prepare()
+            self.take_screenshot(self.URL)
+            self.cleanup()
+        except TimeoutError:
+            pass
+
+    def convert_to_video(self):
+        # ffmpeg -i polished/%05d.polished.png output.mp4
 
     def execute(self):
         for sha in self.get_revision_list():

@@ -1,9 +1,18 @@
 '''
+I snagged this from http://stackoverflow.com/a/18068097 written by Aamir Adnan
+
+Usage examples
+
     screen_path, crop_path, thumbnail_path = get_screen_shot(
         url=url, filename='sof.png',
         crop=True, crop_replace=False,
         thumbnail=True, thumbnail_replace=False,
         thumbnail_width=200, thumbnail_height=150,
+    )
+
+    get_screen_shot(
+        url="http://google.com",
+        path="polished/"
     )
 '''
 
@@ -12,7 +21,9 @@ from subprocess import Popen, PIPE
 from selenium import webdriver
 
 abspath = lambda *p: os.path.abspath(os.path.join(*p))
-ROOT = abspath(os.path.dirname(__file__))
+#ROOT = abspath(os.path.dirname(__file__))
+
+DEFAULT_PATH = "polished/"
 
 
 def execute_command(command):
@@ -23,7 +34,7 @@ def execute_command(command):
 
 def do_screen_capturing(url, screen_path, width, height):
     print "Capturing screen.."
-    driver = webdriver.PhantomJS()
+    driver = webdriver.PhantomJS(service_log_path="/dev/null")
     # it save service log file in same directory
     # if you want to have log file stored else where
     # initialize the webdriver.PhantomJS() as
@@ -63,7 +74,7 @@ def get_screen_shot(**kwargs):
     width = int(kwargs.get('width', 1024)) # screen width to capture
     height = int(kwargs.get('height', 768)) # screen height to capture
     filename = kwargs.get('filename', 'screen.png') # file name e.g. screen.png
-    path = kwargs.get('path', ROOT) # directory path to store screen
+    path = kwargs.get('path', DEFAULT_PATH) # directory path to store screen
 
     crop = kwargs.get('crop', False) # crop the captured screen
     crop_width = int(kwargs.get('crop_width', width)) # the width of crop screen
@@ -74,6 +85,9 @@ def get_screen_shot(**kwargs):
     thumbnail_width = int(kwargs.get('thumbnail_width', width)) # the width of thumbnail
     thumbnail_height = int(kwargs.get('thumbnail_height', height)) # the height of thumbnail
     thumbnail_replace = kwargs.get('thumbnail_replace', False) # does thumbnail image replace crop image?
+
+    if not os.path.isdir(path) and not os.path.exists(path):
+        os.makedirs(path)
 
     screen_path = abspath(path, filename)
     #crop_path = thumbnail_path = screen_path
