@@ -14,34 +14,39 @@ Getting started
 
 THIS ONLY WORKS ON MAC!
 
-### Install
+### Installing
 
 **Requirements**
 
 1. NodeJS
 2. PhantomJS
-3. ImageMagick
-4. ffmpeg
+3. ffmpeg
 
-**Install**
+Then
 
 ```
-pip install polished
+> pip install polished
 ```
 
 ### Usage
 
 For a static website with no .html generation needed and `index.html` is in the same dir:
 
-`polish`
+```
+> polish
+```
 
 For a static website with `index.html` in another location
 
-`polish "some/path/to/index.html"`
+```
+> polish "some/path/to/index.html"
+```
 
 For a pelican blog:
 
-`polish "output/index.html" --backend polished.backends.pelican.PelicanBackend`
+```
+> polish "output/index.html" --backend polished.backends.pelican.PelicanBackend
+```
 
 
 ### Configuring behavior
@@ -54,15 +59,21 @@ To expand the behavior, call `polished --backend my.backend.Backend`
 
 ### Basic available backends
 
-`polished.backends.simple.SimpleBackend()`
+```
+polished.backends.simple.SimpleBackend()
+```
 
 The most basic backend, assumes no steps are needed to generate HTML.
 
-`polished.backends.pelican.PelicanBackend()`
+```
+polished.backends.pelican.PelicanBackend()
+```
 
 For the Pelican blogging system, calls `make html` between builds.
 
-`polished.backends.django.DjangoBackend()`
+```
+polished.backends.django.DjangoBackend()
+```
 
 For the Django framework, calls "syncdb --migrate"
 
