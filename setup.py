@@ -12,6 +12,7 @@ except (IOError, ImportError):
 # pip install git+https://github.com/adamn/python-webkit2png.git@6488a1fbd06d5479f8592af47acc73834647e837
 
 setup(
+    # requires selenium
     name="polished",
     py_modules=["polished"],
     version="0.0.1",
