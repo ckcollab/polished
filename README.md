@@ -9,12 +9,6 @@ blood, sweat and hilarious tears in between should be pretty entertaining. Watch
 grow, and shrink into place.
 
 
-Only tested on Mac Mavericks
-
-
-Uses [screenshot script](http://stackoverflow.com/a/18068097) by Aamir Adnan
-
-
 Getting started
 ===============
 
@@ -106,8 +100,7 @@ class SomeWeirdBehaviorRequired(polished.backends.pelican):
 
 
 
-Settings
-========
 
-- Set settings file if not polished.py
--
+Acknowledgements
+================
+Couldn't have done it without this [screenshot script](http://stackoverflow.com/a/18068097) by Aamir Adnan
