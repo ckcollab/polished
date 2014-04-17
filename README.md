@@ -33,26 +33,26 @@ Then
 For a static website with no .html generation needed and `index.html` is in the same dir:
 
 ```
-> polish
+> polished
 ```
 
 For a static website with `index.html` in another location
 
 ```
-> polish "some/path/to/index.html"
+> polished "some/path/to/index.html"
 ```
 
 For a pelican blog:
 
 ```
-> polish "output/index.html" --backend polished.backends.pelican.PelicanBackend
+> polished "output/index.html" --backend polished.backends.pelican.PelicanBackend
 ```
 
 
 ### Configuring behavior
 
-The default backend is `SimpleBackend` which looks for "index.html" in current directory and expects static html
-without any steps needed to generate the page. This default setup probably doesn't work for most setups.
+The default backend is `SimpleBackend` which (with no path specified) looks for "index.html" in current directory and
+expects static html without any steps needed to generate the page. This default setup probably doesn't work for most setups.
 
 To expand the behavior, call `polished --backend my.backend.Backend`
 
@@ -77,6 +77,8 @@ polished.backends.django.DjangoBackend()
 
 For the Django framework, calls "syncdb --migrate"
 
+
+## Custom backend
 
 Generally, on a simple website these backends will care of you, however you may have to
 inherit them and add custom behavior
@@ -132,3 +134,5 @@ class SomeWeirdBehaviorRequired(polished.backends.pelican):
 Acknowledgements
 ================
 Couldn't have done it without this [screenshot script](http://stackoverflow.com/a/18068097) by Aamir Adnan
+
+Thanks [Levi Thomason](https://github.com/levithomason) for always hearing, encouraging, and helping me out in all aspects of life
