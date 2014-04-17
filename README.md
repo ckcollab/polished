@@ -1,6 +1,11 @@
 polished
 ========
 
+[![Polished example video](http://img.youtube.com/vi/yBTDiGhJjlo/0.jpg)](http://www.youtube.com/watch?v=yBTDiGhJjlo)
+
+For more information look here. If you want to keep it simple, just make it a link using the following syntax:
+
+
 Only tested on Mac Mavericks
 
 
@@ -25,58 +30,74 @@ THIS ONLY WORKS ON MAC!
 pip install polished
 ```
 
-### Select a backend
+### Configuring behavior
 
-Default backend is `SimpleBackend` which looks for "index.html" in current directory and expects static html
-without any steps needed to generate the page
+The default backend is `SimpleBackend` which looks for "index.html" in current directory and expects static html
+without any steps needed to generate the page. This default setup probably doesn't work for most setups.
+
+To expand the behavior, call `polished --backend my.backend.Backend`
 
 
-**Available backends:**
+### Basic available backends
 
-```
-'polished.backends.simple'
-'polished.backends.pelican'
-'polished.backends.django'
-```
+`polished.backends.simple.SimpleBackend()`
+
+The most basic backend, assumes no steps are needed to generate HTML.
+
+`polished.backends.pelican.PelicanBackend()`
+
+For the Pelican blogging system, calls `make html` between builds.
+
+`polished.backends.django.DjangoBackend()`
+
+For the Django framework, calls "syncdb --migrate"
+
 
 Generally, on a simple website these backends will care of you, however you may have to
 inherit them and add custom behavior
 
 ```python
 import polished
+import subprocess
 
 class SomeWeirdBehaviorRequired(polished.backends.pelican):
     def prepare(self):
         '''
-        Prepare your stuff here! Generate HTML, make small changes based on a specific problem, skip
+        Prepare your general stuff here! Generate HTML, setup static files, etc.
         '''
-        pass
+
 
     def cleanup(self):
         '''
-        Clean up after yourself
+        Clean up after yourself, delete static files if you need to
         '''
         pass
+
+    @polish(image=15, html="output/pages/about.html")
+    def fix_broken_import(self):
+        '''
+        So you committed some broken img reference that is breaking image #15 (generally polished/00015.polished.png)
+        '''
+        all_a_tags = html.cssselect('a')
+        for a in all_a_tags:
+            a.attrib["href"] = "some_other_url/%s" % a.attrib["href"]
 ```
 
-
-@polish_between_shas("sha", "sha")
-@polish_between_images(1, 3)
-@polish_sha("asfd")
-@polish_image(1)
-@polish_after_sha("asdf")
-@polish_after_image(1)
-
-
 @polish(between_shas=("sha1", "sha2"))
+
 @polish(between_images=(1, 3))
+
 @polish(image=1)
+
 @polish(sha="sha")
 
 
 @skip(between_shas=("sha1", "sha2"))
+
 @skip(between_images=(1, 3))
+
 @skip(image=1)
+
 @skip(sha="sha")
 
 
