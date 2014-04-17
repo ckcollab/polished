@@ -17,24 +17,31 @@ Usage examples
 '''
 
 import os
-from subprocess import Popen, PIPE
+import subprocess
+
 from selenium import webdriver
+
 
 abspath = lambda *p: os.path.abspath(os.path.join(*p))
 #ROOT = abspath(os.path.dirname(__file__))
 
 DEFAULTS = {
     "path": "polished/",
-    "width": 1386,
-    "height": 1024,
+    "width": 1024,
+    "height": 768,
 }
 
 
 def execute_command(command):
+    # adding -u forces no buffering to happen, so no deadlocks occur
+    #command.append("-u")
     #result = Popen(command, shell=True, stdout=PIPE).stdout.read()
-    result = Popen(command, stdout=PIPE).stdout.read()
-    if len(result) > 0 and not result.isspace():
-        raise Exception(result)
+    #result = Popen(command, stdout=PIPE).stdout.read()
+    #result.communicate("n\n")
+    #result.close()
+    #if len(result) > 0 and not result.isspace():
+    #    raise Exception(result)
+    subprocess.call(command)
 
 
 def do_screen_capturing(url, screen_path, width, height):
@@ -49,6 +56,7 @@ def do_screen_capturing(url, screen_path, width, height):
         driver.set_window_size(width, height)
     driver.get(url)
     driver.save_screenshot(screen_path)
+    driver.quit()
 
 
 def do_crop(params):

@@ -71,8 +71,18 @@ class SimpleBackend(object):
             pass
 
     def convert_to_video(self):
-        # -r 1 for 1fps
-        subprocess.call(["ffmpeg", "-r", "1", "-i", "polished/%05d.polished.png", "-r", "10", "polished/output.mp4"])
+        subprocess.call([
+            "ffmpeg",
+            "-framerate", "3",
+            "-pattern_type", "glob",
+            "-i", "polished/*.png",
+            "polished/output.mp4"
+        ])
+
+    def _cmd(self, command):
+        p = subprocess.Popen(command, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+        (output, _) = p.communicate(input='')
+        return output
 
     def execute(self, url=None):
         if url != None:
