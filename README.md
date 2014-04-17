@@ -1,5 +1,5 @@
-polish
-======
+polished
+========
 
 Only tested on Mac Mavericks
 
