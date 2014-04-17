@@ -3,7 +3,10 @@ polished
 
 [![Polished example video](http://img.youtube.com/vi/yBTDiGhJjlo/0.jpg)](http://www.youtube.com/watch?v=yBTDiGhJjlo)
 
-For more information look here. If you want to keep it simple, just make it a link using the following syntax:
+The goal of polished is to show the awesome progression and amount of tweaks that go into any website. My resume
+is a good example, dozens of hours of work and tweaking to come up with this pretty basic final product. Showing that
+blood, sweat and hilarious tears in between should be pretty entertaining. Watch pages undulate, stretch, break,
+grow, and shrink into place.
 
 
 Only tested on Mac Mavericks
