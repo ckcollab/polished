@@ -12,7 +12,7 @@ class SimpleBackend(object):
     An example of a framework that would use this method might be Django, to `python manage.py migrate`
     and such.
     '''
-    URL = 'http://localhost:8000/'
+    URL = 'index.html'
     SCREENSHOT_COUNT = 0
 
     def prepare(self):
@@ -71,8 +71,14 @@ class SimpleBackend(object):
             pass
 
     def convert_to_video(self):
-        # ffmpeg -i polished/%05d.polished.png output.mp4
+        # -r 1 for 1fps
+        subprocess.call(["ffmpeg", "-r", "1", "-i", "polished/%05d.polished.png", "-r", "10", "polished/output.mp4"])
 
-    def execute(self):
+    def execute(self, url=None):
+        if url != None:
+            self.URL = url
+
         for sha in self.get_revision_list():
             self.get_screenshot(sha)
+
+        self.convert_to_video()

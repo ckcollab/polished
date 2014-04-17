@@ -23,11 +23,16 @@ from selenium import webdriver
 abspath = lambda *p: os.path.abspath(os.path.join(*p))
 #ROOT = abspath(os.path.dirname(__file__))
 
-DEFAULT_PATH = "polished/"
+DEFAULTS = {
+    "path": "polished/",
+    "width": 1386,
+    "height": 1024,
+}
 
 
 def execute_command(command):
-    result = Popen(command, shell=True, stdout=PIPE).stdout.read()
+    #result = Popen(command, shell=True, stdout=PIPE).stdout.read()
+    result = Popen(command, stdout=PIPE).stdout.read()
     if len(result) > 0 and not result.isspace():
         raise Exception(result)
 
@@ -71,10 +76,10 @@ def do_thumbnail(params):
 
 def get_screen_shot(**kwargs):
     url = kwargs['url']
-    width = int(kwargs.get('width', 1024)) # screen width to capture
-    height = int(kwargs.get('height', 768)) # screen height to capture
+    width = int(kwargs.get('width', DEFAULTS["width"])) # screen width to capture
+    height = int(kwargs.get('height', DEFAULTS["height"])) # screen height to capture
     filename = kwargs.get('filename', 'screen.png') # file name e.g. screen.png
-    path = kwargs.get('path', DEFAULT_PATH) # directory path to store screen
+    path = kwargs.get('path', DEFAULTS["path"]) # directory path to store screen
 
     crop = kwargs.get('crop', False) # crop the captured screen
     crop_width = int(kwargs.get('crop_width', width)) # the width of crop screen

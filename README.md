@@ -17,6 +17,7 @@ THIS ONLY WORKS ON MAC!
 1. NodeJS
 2. PhantomJS
 3. ImageMagick
+4. ffmpeg
 
 ### Install
 
@@ -26,8 +27,11 @@ pip install polished
 
 ### Select a backend
 
-- Default backend is "simple" and expects static html without any steps needed to generate the page
-- Available backends:
+Default backend is `SimpleBackend` which looks for "index.html" in current directory and expects static html
+without any steps needed to generate the page
+
+
+**Available backends:**
 
 ```
 'polished.backends.simple'
