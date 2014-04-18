@@ -13,6 +13,11 @@ except (IOError, ImportError):
 
 setup(
     # requires selenium
+    entry_points={
+        "console_scripts": [
+            "polished = polished.main:main"
+        ]
+    },
     name="polished",
     py_modules=["polished"],
     version="0.0.1",
