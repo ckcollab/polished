@@ -106,11 +106,9 @@ Generally, on a simple website these backends will care of you, however you may 
 inherit them and add custom behavior
 
 ```python
-import lxml
-import polished
-import subprocess
+from polished.backends import PelicanBackend
 
-class SomeWeirdBehaviorRequired(polished.backends.pelican):
+class SomeWeirdBehaviorRequired(PelicanBackend):
     def prepare(self):
         '''
         Prepare your general stuff here! Generate HTML, setup static files, etc.
@@ -122,11 +120,25 @@ class SomeWeirdBehaviorRequired(polished.backends.pelican):
         Clean up after yourself, delete static files if you need to
         '''
         pass
+```
 
-    @polish(image=15)
+
+
+
+## Polishing certain commits
+
+Use the `@polish` decorator:
+
+```python
+import lxml
+from polished.backends import PelicanBackend
+
+class SomeWeirdBehaviorRequired(PelicanBackend):
+    @polish(commit_indexes=[15])
     def fix_broken_link(self):
         '''
-        So you committed some broken img reference that is breaking image #15 (generally polished_output/00015.polished.png)
+        So you committed some broken img reference that is breaking commit #15 (generally
+        polished_output/<commit #>.<sha>.png) now let's fix it!
         '''
         file_data = open("output/pages/about.html").read()
         html = lxml.html.fromstring()
@@ -136,31 +148,19 @@ class SomeWeirdBehaviorRequired(polished.backends.pelican):
 ```
 
 
-@polish(url="index.html") # url to polish
+```
+@polish(commit_indexes=range(20,30))
+def some_func():
+    pass
+```
+Polish commits 20 through 30
 
-
-
-@polish(between_shas=("sha1", "sha2"))
-
-@polish(between_images=(1, 3))
-
-@polish(image=1)
-
-@polish(sha="sha")
-
-
-@skip(between_shas=("sha1", "sha2"))
-
-@skip(between_images=(1, 3))
-
-@skip(image=1)
-
-@skip(sha="sha")
-
-
-
-
-
+```
+@polish(urls=["index.html", "about.html"])
+def some_func():
+    pass
+```
+Fix up something with `index.html` and `about.html`
 
 
 Known issues
