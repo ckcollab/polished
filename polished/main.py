@@ -14,8 +14,9 @@ def load_class(full_class_string):
     class_name = class_parts[-1]
 
     module = importlib.import_module(module_path)
-    # Finally, we retrieve the Class
+
     return getattr(module, class_name)
+
 
 def main():
     parser = argparse.ArgumentParser(description="Generate a screenshot from each commit to convert to video")
@@ -31,14 +32,9 @@ def main():
     )
 
     args = parser.parse_args()
-    # args.backend
-    # args.url
-
-    print args.backend
 
     sys.path.append("../")
 
-    #backend = importlib.import_module(args.backend)
     backend = load_class(args.backend)
 
     polished = backend()
