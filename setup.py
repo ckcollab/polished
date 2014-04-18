@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 try:
@@ -18,8 +18,9 @@ setup(
         ]
     },
     name="polished",
-    py_modules=["polished"],
-    version="0.0.1",
+    #py_modules=["polished"],
+    packages=find_packages(),
+    version="0.0.2",
     author="Eric Carmichael",
     author_email="eric@ckcollab.com",
     description="Generates screenshots of a website based on git history",

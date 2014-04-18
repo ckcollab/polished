@@ -20,12 +20,11 @@ Once you've installed polished, it works like this:
 Getting started
 ===============
 
-THIS ONLY WORKS ON MAC!
-
 ### Installing
 
 **Requirements**
 
+1. Mac/Linux
 1. NodeJS
 2. PhantomJS
 3. ffmpeg
