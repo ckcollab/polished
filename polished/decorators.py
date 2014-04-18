@@ -2,7 +2,7 @@ from functools import wraps
 
 
 
-def polish(commit_indexes=None, url=None):
+def polish(commit_indexes=None, urls=None):
     '''
     Apply certain behaviors to commits or URLs that need polishing before they are ready for screenshots
 
@@ -15,21 +15,10 @@ def polish(commit_indexes=None, url=None):
     '''
     def decorator(f):
         if commit_indexes:
-            f.polish_commit_index = commit_indexes
-        if url:
-            f.polish_url = url
+            f.polish_commit_indexes = commit_indexes
+        if urls:
+            f.polish_urls = urls
 
-        @wraps(f)
-        def wrappee(*args, **kwargs):
-            return f(*args, **kwargs)
-
-        return wrappee
-
-    return decorator
-
-
-def skip(commit_indexes=None):
-    def decorator(f):
         @wraps(f)
         def wrappee(*args, **kwargs):
             return f(*args, **kwargs)

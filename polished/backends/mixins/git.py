@@ -1,7 +1,5 @@
 import subprocess
 
-from polished.backends.helpers.timeout import TimeoutError
-
 
 class GitMixin(object):
 
@@ -13,12 +11,5 @@ class GitMixin(object):
         for sha in reversed(shas):
             yield sha
 
-    def get_process_revision(self, sha):
+    def checkout(self, sha):
         subprocess.call(['git', 'checkout', sha])
-
-        try:
-            self.prepare()
-            self.screenshot(self.URL)
-            self.cleanup()
-        except TimeoutError:
-            pass

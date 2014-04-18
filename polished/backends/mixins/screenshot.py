@@ -12,12 +12,11 @@ class ScreenshotMixin(object):
         "width": 1280,
         "height": 960,
     }
-    SCREENSHOT_COUNT = 0
 
     def screenshot(self, url):
         print "Capturing screen.."
 
-        filename = "%05d.polished.png" % self.SCREENSHOT_COUNT
+        filename = "%05d.polished.png" % self.CURRENT_COMMIT_INDEX
         screenshot_path = os.path.abspath(os.path.join(self.SCREENSHOT_DEFAULTS["path"], filename))
 
         self._do_screenshot(
@@ -26,8 +25,6 @@ class ScreenshotMixin(object):
             self.SCREENSHOT_DEFAULTS["width"],
             self.SCREENSHOT_DEFAULTS["height"],
         )
-
-        self.SCREENSHOT_COUNT = self.SCREENSHOT_COUNT + 1
 
     def _do_screenshot(self, url, screen_path, width, height):
         driver = webdriver.PhantomJS(service_log_path="/dev/null")

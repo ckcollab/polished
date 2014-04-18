@@ -10,3 +10,5 @@ class PelicanBackend(SimpleBackend):
     @timeout(30)
     def prepare(self):
         subprocess.call(["make", "html"])
+
+        super(PelicanBackend, self).prepare()

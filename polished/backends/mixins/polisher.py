@@ -1,24 +1,38 @@
 import inspect
+import subprocess
 
 from polished.decorators import polish
-
 
 
 class PolisherMixin(object):
     '''
     Searches through the backend for @polish marked functions to call before the HTML is screen captured
     '''
-    POLISH_FUNCTIONS = []
+    EXTRA_POLISH_FUNCTIONS = []
 
-    def _get_marked_funcs(self):
-        # 'polish_url' in my_func.__dict__
-        # 'polish_commit_indexes' in my_func.__dict__
+    def __init__(self):
+        for name, method in inspect.getmembers(self):
+            if callable(method) and (hasattr(method, 'polish_urls') or hasattr(method, 'polish_commit_indexes')):
+                self.EXTRA_POLISH_FUNCTIONS.append(method)
 
-        # inspect.isfunction(method)
+    def prepare(self):
+        self.do_extra_polishing()
 
-        print self.__dict__
-        pass
+    def cleanup(self):
+        subprocess.call(["git", "checkout", "."])
 
-    @polish(url="tree trunk")
+    def do_extra_polishing(self):
+        '''
+        Goes over each EXTRA_POLISH_FUNCTION to see if it applies to this page, if so, calls it
+        '''
+        for f in self.EXTRA_POLISH_FUNCTIONS:
+            if hasattr(f, 'polish_urls') and self.URL in f.polish_urls:
+                f()
+
+    @polish(urls=["tree trunk.html"])
     def test_func(self):
+        print 'riddeeee'
+
+    @polish(commit_indexes=range(1, 5))
+    def test_funcer(self):
         print 'riddeeee'

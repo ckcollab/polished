@@ -67,9 +67,10 @@ For a pelican blog:
 ### Configuring behavior
 
 The default backend is `SimpleBackend` which (with no path specified) looks for "index.html" in current directory and
-expects static html without any steps needed to generate the page. This default setup probably doesn't work for most setups.
+expects static html without any steps needed to generate the page. This default setup probably doesn't work for most
+projects.
 
-To expand the behavior, call `polished --backend my.backend.Backend`
+To expand the behavior, call `polished my/output/index.html --backend my.backend.Backend`
 
 
 
@@ -87,7 +88,7 @@ The most basic backend, assumes no steps are needed to generate HTML.
 polished.backends.pelican.PelicanBackend()
 ```
 
-For the Pelican blogging system, calls `make html` between builds.
+For the Pelican blogging system, calls `make html` between screenshots.
 
 ```
 polished.backends.django.DjangoBackend()
