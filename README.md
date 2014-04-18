@@ -78,19 +78,19 @@ To expand the behavior, call `polished my/output/index.html --backend my.backend
 
 ### Basic available backends
 
-```
+```python
 polished.backends.simple.SimpleBackend()
 ```
 
 The most basic backend, assumes no steps are needed to generate HTML.
 
-```
+```python
 polished.backends.pelican.PelicanBackend()
 ```
 
 For the Pelican blogging system, calls `make html` between screenshots.
 
-```
+```python
 polished.backends.django.DjangoBackend()
 ```
 
@@ -148,14 +148,14 @@ class SomeWeirdBehaviorRequired(PelicanBackend):
 ```
 
 
-```
+```python
 @polish(commit_indexes=range(20,30))
 def some_func():
     pass
 ```
 Polish commits 20 through 30
 
-```
+```python
 @polish(urls=["index.html", "about.html"])
 def some_func():
     pass
