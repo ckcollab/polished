@@ -14,6 +14,12 @@ class BaseBackend(GitMixin, PolisherMixin, VideoMixin, DriverMixin):
         '''
         super(BaseBackend, self).prepare()
 
+    def prepare_page(self, *args, **kwargs):
+        '''
+        This is called after the page has been loaded, good time to do extra polishing
+        '''
+        super(BaseBackend, self).prepare_page(*args, **kwargs)
+
     def cleanup(self):
         '''
         Cleanup after prepare() before the next retrieve, make sure you call super!
@@ -33,7 +39,8 @@ class BaseBackend(GitMixin, PolisherMixin, VideoMixin, DriverMixin):
             try:
                 self.prepare()
                 self.go_to_url(url)
-                self.screenshot(only_new_pages=True)
+                self.prepare_page()
+                self.screenshot()
                 self.cleanup()
             except TimeoutError:
                 pass

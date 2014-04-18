@@ -18,8 +18,9 @@ class PolisherMixin(Base):
 
         super(PolisherMixin, self).__init__(*args, **kwargs)
 
-    def prepare(self):
+    def prepare_page(self, *args, **kwargs):
         self.do_extra_polishing()
+        super(PolisherMixin, self).prepare_page(*args, **kwargs)
 
     def cleanup(self, *args, **kwargs):
         subprocess.call(["git", "checkout", "."])
