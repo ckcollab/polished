@@ -1,10 +1,10 @@
 import subprocess
 
-from .mixins import GitMixin, ScreenshotMixin, VideoMixin
+from .mixins import GitMixin, PolisherMixin, ScreenshotMixin, VideoMixin
 
 
 
-class SimpleBackend(GitMixin, VideoMixin, ScreenshotMixin):
+class SimpleBackend(GitMixin, PolisherMixin, VideoMixin, ScreenshotMixin):
     '''
     The simple backend assumes the repo is already prepared, i.e. static html
 

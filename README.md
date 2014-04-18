@@ -8,6 +8,9 @@ is a good example, dozens of hours of work and tweaking to come up with this pre
 blood, sweat and hilarious tears in between should be pretty entertaining. Watch pages undulate, stretch, break,
 grow, and shrink into place.
 
+
+
+
 ### How does it work?
 
 Once you've installed polished, it works like this:
@@ -35,6 +38,9 @@ Then
 > pip install polished
 ```
 
+
+
+
 ### Usage
 
 For a static website with no .html generation needed and `index.html` is in the same dir:
@@ -56,12 +62,17 @@ For a pelican blog:
 ```
 
 
+
+
 ### Configuring behavior
 
 The default backend is `SimpleBackend` which (with no path specified) looks for "index.html" in current directory and
 expects static html without any steps needed to generate the page. This default setup probably doesn't work for most setups.
 
 To expand the behavior, call `polished --backend my.backend.Backend`
+
+
+
 
 
 ### Basic available backends
@@ -85,12 +96,16 @@ polished.backends.django.DjangoBackend()
 For the Django framework, calls "syncdb --migrate"
 
 
+
+
+
 ## Custom backend
 
 Generally, on a simple website these backends will care of you, however you may have to
 inherit them and add custom behavior
 
 ```python
+import lxml
 import polished
 import subprocess
 
@@ -99,7 +114,7 @@ class SomeWeirdBehaviorRequired(polished.backends.pelican):
         '''
         Prepare your general stuff here! Generate HTML, setup static files, etc.
         '''
-
+        pass
 
     def cleanup(self):
         '''
@@ -107,15 +122,22 @@ class SomeWeirdBehaviorRequired(polished.backends.pelican):
         '''
         pass
 
-    @polish(image=15, html="output/pages/about.html")
-    def fix_broken_import(self):
+    @polish(image=15)
+    def fix_broken_link(self):
         '''
-        So you committed some broken img reference that is breaking image #15 (generally polished/00015.polished.png)
+        So you committed some broken img reference that is breaking image #15 (generally polished_output/00015.polished.png)
         '''
+        file_data = open("output/pages/about.html").read()
+        html = lxml.html.fromstring()
         all_a_tags = html.cssselect('a')
         for a in all_a_tags:
             a.attrib["href"] = "some_other_url/%s" % a.attrib["href"]
 ```
+
+
+@polish(url="index.html") # url to polish
+
+
 
 @polish(between_shas=("sha1", "sha2"))
 
@@ -138,8 +160,24 @@ class SomeWeirdBehaviorRequired(polished.backends.pelican):
 
 
 
+
+
+Known issues
+============
+
+* It leaves a ton of processes still running for some reason
+
+
+
+
+
+
+
+
+
 Acknowledgements
 ================
 Couldn't have done it without this [screenshot script](http://stackoverflow.com/a/18068097) by Aamir Adnan
 
-Thanks [Levi Thomason](https://github.com/levithomason) for always hearing, encouraging, and helping me out in all aspects of life
+Thanks [Levi Thomason](https://github.com/levithomason) for always listening to me, encouraging me to improve,
+and helping me out in all aspects of life

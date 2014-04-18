@@ -8,7 +8,7 @@ from selenium import webdriver
 class ScreenshotMixin(object):
 
     SCREENSHOT_DEFAULTS = {
-        "path": "polished/",
+        "path": "polished_output/",
         "width": 1280,
         "height": 960,
     }
@@ -31,13 +31,15 @@ class ScreenshotMixin(object):
 
     def _do_screenshot(self, url, screen_path, width, height):
         driver = webdriver.PhantomJS(service_log_path="/dev/null")
-        #driver = webdriver.Chrome()
-        driver.set_script_timeout(30)
-        if width and height:
-            driver.set_window_size(width, height)
-        driver.get(url)
-        driver.save_screenshot(screen_path)
-        driver.quit()
+
+        try:
+            driver.set_script_timeout(30)
+            if width and height:
+                driver.set_window_size(width, height)
+            driver.get(url)
+            driver.save_screenshot(screen_path)
+        finally:
+            driver.quit()
 
         # verify screenshot has data, if not just delete it
         if os.stat(screen_path).st_size == 0:
