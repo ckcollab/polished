@@ -152,9 +152,9 @@ class SomeWeirdBehaviorRequired(PelicanBackend):
 ```python
 @polish(commit_indexes=range(20,30))
 def some_func():
-    pass
+    # Polish commits 20 through 30
 ```
-Polish commits 20 through 30
+
 
 
 ### @polish certain pages
@@ -162,9 +162,9 @@ Polish commits 20 through 30
 ```python
 @polish(urls=["index.html", "about.html"])
 def some_func():
-    pass
+    # Fix up something with "index.html" and "about.html"
 ```
-Fix up something with `index.html` and `about.html`
+
 
 
 Known issues
