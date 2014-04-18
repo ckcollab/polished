@@ -8,11 +8,10 @@ except (IOError, ImportError):
     long_description = ''
 
 
-# Depends on
-# pip install git+https://github.com/adamn/python-webkit2png.git@6488a1fbd06d5479f8592af47acc73834647e837
-
 setup(
-    # requires selenium
+    install_requires=[
+        "selenium>=2.41.0"
+    ],
     entry_points={
         "console_scripts": [
             "polished = polished.main:main"
