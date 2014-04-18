@@ -1,3 +1,5 @@
+import subprocess
+
 from .helpers.timeout import TimeoutError
 from .mixins import GitMixin, PolisherMixin, DriverMixin, VideoMixin
 
@@ -8,23 +10,10 @@ class BaseBackend(GitMixin, PolisherMixin, VideoMixin, DriverMixin):
     CURRENT_SHA = None
     CURRENT_COMMIT_INDEX = 0
 
-    def prepare(self):
-        '''
-        After changing git revisions, prepare the repository, make sure you call super!
-        '''
-        super(BaseBackend, self).prepare()
+    def __init__(self, *args, **kwargs):
+        subprocess.call(["rm", "-rf", "polished_output/*.png"])
 
-    def prepare_page(self, *args, **kwargs):
-        '''
-        This is called after the page has been loaded, good time to do extra polishing
-        '''
-        super(BaseBackend, self).prepare_page(*args, **kwargs)
-
-    def cleanup(self):
-        '''
-        Cleanup after prepare() before the next retrieve, make sure you call super!
-        '''
-        super(BaseBackend, self).cleanup()
+        super(BaseBackend, self).__init__(*args, **kwargs)
 
     def execute(self, url=None):
         if url != None:

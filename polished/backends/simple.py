@@ -13,3 +13,21 @@ class SimpleBackend(BaseBackend):
     and such.
     '''
     URL = 'index.html'
+
+    def prepare(self):
+        '''
+        After changing git revisions, prepare the repository, make sure you call super!
+        '''
+        super(BaseBackend, self).prepare()
+
+    def prepare_page(self, *args, **kwargs):
+        '''
+        This is called after the page has been loaded, good time to do extra polishing
+        '''
+        super(BaseBackend, self).prepare_page(*args, **kwargs)
+
+    def cleanup(self):
+        '''
+        Cleanup after prepare() before the next retrieve, make sure you call super!
+        '''
+        super(BaseBackend, self).cleanup()
