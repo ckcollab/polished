@@ -1,6 +1,6 @@
+import fnmatch
 import glob
 import os
-import subprocess
 
 from .helpers.timeout import TimeoutError
 from .mixins import GitMixin, PolisherMixin, DriverMixin, VideoMixin
@@ -13,13 +13,15 @@ class BaseBackend(GitMixin, PolisherMixin, VideoMixin, DriverMixin):
     CURRENT_COMMIT_INDEX = 0
 
     def __init__(self, *args, **kwargs):
-        self._remove_files("polished_output/*.png")
+        self._remove_files("polished_output", "*.png")
 
         super(BaseBackend, self).__init__(*args, **kwargs)
 
     def execute(self, url=None):
         if url != None:
             self.URL = url
+        else:
+            url = self.URL
 
         for sha in self.get_revision_list():
             self.CURRENT_SHA = sha
@@ -44,7 +46,7 @@ class BaseBackend(GitMixin, PolisherMixin, VideoMixin, DriverMixin):
         self.checkout("master")
         super(BaseBackend, self).dispose(*args, **kwargs)
 
-    def _remove_files(self, search_path):
+    def _remove_files(self, directory, pattern):
         '''
         Removes all files matching the search path
 
@@ -54,6 +56,6 @@ class BaseBackend(GitMixin, PolisherMixin, VideoMixin, DriverMixin):
         Example:
         self._remove_files("output/*.html")
         '''
-        files = glob.glob(search_path)
-        for file_name in files:
-            os.remove(file_name)
+        for root, dirnames, file_names in os.walk(directory):
+            for file_name in fnmatch.filter(file_names, pattern):
+                os.remove(os.path.join(root, file_name))
