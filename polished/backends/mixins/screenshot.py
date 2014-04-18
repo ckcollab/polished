@@ -9,8 +9,8 @@ class ScreenshotMixin(object):
 
     SCREENSHOT_DEFAULTS = {
         "path": "polished/",
-        "width": 1024,
-        "height": 768,
+        "width": 1280,
+        "height": 960,
     }
     SCREENSHOT_COUNT = 0
 
@@ -38,3 +38,7 @@ class ScreenshotMixin(object):
         driver.get(url)
         driver.save_screenshot(screen_path)
         driver.quit()
+
+        # verify screenshot has data, if not just delete it
+        if os.stat(screen_path).st_size == 0:
+            os.remove(screen_path)
