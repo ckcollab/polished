@@ -8,7 +8,7 @@ class PelicanBackend(SimpleBackend):
     URL = 'output/index.html'
 
     def __init__(self, *args, **kwargs):
-        subprocess.call(["rm", "-rf", "output/*.html"])
+        self._remove_files("output/*.html")
 
         super(PelicanBackend, self).__init__(*args, **kwargs)
 

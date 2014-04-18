@@ -1,3 +1,5 @@
+import glob
+import os
 import subprocess
 
 from .helpers.timeout import TimeoutError
@@ -11,7 +13,7 @@ class BaseBackend(GitMixin, PolisherMixin, VideoMixin, DriverMixin):
     CURRENT_COMMIT_INDEX = 0
 
     def __init__(self, *args, **kwargs):
-        subprocess.call(["rm", "-rf", "polished_output/*.png"])
+        self._remove_files("polished_output/*.png")
 
         super(BaseBackend, self).__init__(*args, **kwargs)
 
@@ -41,3 +43,17 @@ class BaseBackend(GitMixin, PolisherMixin, VideoMixin, DriverMixin):
     def dispose(self, *args, **kwargs):
         self.checkout("master")
         super(BaseBackend, self).dispose(*args, **kwargs)
+
+    def _remove_files(self, search_path):
+        '''
+        Removes all files matching the search path
+
+        Arguments:
+        search_path -- The path you would like to remove, can contain wildcards
+
+        Example:
+        self._remove_files("output/*.html")
+        '''
+        files = glob.glob(search_path)
+        for file_name in files:
+            os.remove(file_name)
