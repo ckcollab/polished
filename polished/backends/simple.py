@@ -13,15 +13,3 @@ class SimpleBackend(BaseBackend):
     and such.
     '''
     URL = 'index.html'
-
-    def prepare(self):
-        '''
-        After changing git revisions, prepare the repository, make sure you call super!
-        '''
-        super(SimpleBackend, self).prepare()
-
-    def cleanup(self):
-        '''
-        Cleanup after prepare() before the next retrieve, make sure you call super!
-        '''
-        super(SimpleBackend, self).cleanup()

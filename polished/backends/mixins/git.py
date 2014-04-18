@@ -1,7 +1,9 @@
 import subprocess
 
+from base import Base
 
-class GitMixin(object):
+
+class GitMixin(Base):
 
     def get_revision_list(self):
         sha_list_string = subprocess.check_output(['git', 'rev-list', 'master'])

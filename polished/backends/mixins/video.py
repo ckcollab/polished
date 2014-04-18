@@ -1,7 +1,9 @@
 import subprocess
 
+from base import Base
 
-class VideoMixin(object):
+
+class VideoMixin(Base):
 
     def convert_to_video(self):
         subprocess.call([

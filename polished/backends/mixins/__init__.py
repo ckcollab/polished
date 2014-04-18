@@ -1,4 +1,4 @@
 from git import GitMixin
 from polisher import PolisherMixin
-from screenshot import ScreenshotMixin
+from driver import DriverMixin
 from video import VideoMixin

@@ -1,25 +1,30 @@
 import inspect
 import subprocess
 
+from base import Base
 from polished.decorators import polish
 
 
-class PolisherMixin(object):
+class PolisherMixin(Base):
     '''
     Searches through the backend for @polish marked functions to call before the HTML is screen captured
     '''
     EXTRA_POLISH_FUNCTIONS = []
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         for name, method in inspect.getmembers(self):
             if callable(method) and (hasattr(method, 'polish_urls') or hasattr(method, 'polish_commit_indexes')):
                 self.EXTRA_POLISH_FUNCTIONS.append(method)
 
+        super(PolisherMixin, self).__init__(*args, **kwargs)
+
     def prepare(self):
         self.do_extra_polishing()
 
-    def cleanup(self):
+    def cleanup(self, *args, **kwargs):
         subprocess.call(["git", "checkout", "."])
+
+        super(PolisherMixin, self).cleanup(*args, **kwargs)
 
     def do_extra_polishing(self):
         '''
