@@ -1,1 +1,0 @@
--e git+https://github.com/adamn/python-webkit2png.git@6488a1fbd06d5479f8592af47acc73834647e837
