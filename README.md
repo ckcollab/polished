@@ -147,6 +147,7 @@ class SomeWeirdBehaviorRequired(PelicanBackend):
             a.attrib["href"] = "some_other_url/%s" % a.attrib["href"]
 ```
 
+### @polish range of commit indexes
 
 ```python
 @polish(commit_indexes=range(20,30))
@@ -154,6 +155,9 @@ def some_func():
     pass
 ```
 Polish commits 20 through 30
+
+
+### @polish certain pages
 
 ```python
 @polish(urls=["index.html", "about.html"])
