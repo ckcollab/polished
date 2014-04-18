@@ -15,7 +15,7 @@ grow, and shrink into place.
 
 Once you've installed polished, it works like this:
 
-1. Fires up selected backend (for example, PelicanBackend if you use the [Pelican]() blog site generator)
+1. Fires up selected backend (for example, PelicanBackend if you use the [Pelican](https://github.com/getpelican/pelican) blog site generator)
 2. Get the history of your git repo
 3. Iterate through that history, preparing each page and finally screen cap it
 
