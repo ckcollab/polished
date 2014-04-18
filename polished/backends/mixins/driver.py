@@ -19,6 +19,7 @@ class DriverMixin(Base):
 
     def __init__(self, *args, **kwargs):
         self.DRIVER = webdriver.PhantomJS(service_log_path="/dev/null")
+        self.DRIVER.implicitly_wait(10)
         self.DRIVER.set_script_timeout(30)
         self.DRIVER.set_window_size(self.SCREENSHOT_DEFAULTS["width"], self.SCREENSHOT_DEFAULTS["height"])
         super(DriverMixin, self).__init__(*args, **kwargs)
