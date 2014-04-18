@@ -172,7 +172,7 @@ Known issues
 ============
 
 * It leaves a ton of processes still running for some reason
-
+* Web fonts don't work right with PhantomJS
 
 
 
