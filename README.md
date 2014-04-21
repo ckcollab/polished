@@ -1,7 +1,7 @@
 polished
 ========
 
-[![Polished example video](http://img.youtube.com/vi/J4sBUXP7zoo/0.jpg)](http://www.youtube.com/watch?v=J4sBUXP7zoo)
+[![Polished example video](http://img.youtube.com/vi/Yi5fHkGqe38/0.jpg)](http://www.youtube.com/watch?v=Yi5fHkGqe38)
 
 The goal of polished is to show the awesome progression and amount of tweaks that go into any website. My [resume](http://ericcarmichael.com)
 is a good example, dozens of hours of work and tweaking to come up with this pretty basic final product. Showing that
