@@ -32,13 +32,15 @@ class PolisherMixin(Base):
         Goes over each EXTRA_POLISH_FUNCTION to see if it applies to this page, if so, calls it
         '''
         for f in self.EXTRA_POLISH_FUNCTIONS:
-            if hasattr(f, 'polish_urls') and self.URL in f.polish_urls:
-                f()
+            if not hasattr(f, 'polish_commit_indexes'):
+                if hasattr(f, 'polish_urls') and self.URL in f.polish_urls:
+                    f()
 
-    @polish(urls=["tree trunk.html"])
-    def test_func(self):
-        print 'riddeeee'
+            if not hasattr(f, 'polish_urls'):
+                if hasattr(f, 'polish_commit_indexes') and self.CURRENT_COMMIT_INDEX in f.polish_commit_indexes:
+                    f()
 
-    @polish(commit_indexes=range(1, 5))
-    def test_funcer(self):
-        print 'riddeeee'
+            if hasattr(f, 'polish_commit_indexes') and hasattr(f, 'polish_urls'):
+                if self.URL in f.polish_urls and self.CURRENT_COMMIT_INDEX in f.polish_commit_indexes:
+                    f()
+
