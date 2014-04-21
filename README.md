@@ -168,6 +168,16 @@ def some_func():
 
 
 
+### @polish certain pages of certain commits
+
+```python
+@polish(urls=["index.html", "about.html"], commit_indexes=range(20,30))
+def some_func():
+    # Fix up something with "index.html" and "about.html", but only in commits 20 through 30
+```
+
+
+
 Known issues
 ============
 
