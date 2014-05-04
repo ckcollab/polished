@@ -13,7 +13,7 @@ grow, and shrink into place.
 
 ### How does polished work?
 
-1. Fires up selected backend (for example, PelicanBackend if you use the [Pelican](https://github.com/getpelican/pelican) blog site generator)
+1. Fires up selected backend *(for example, PelicanBackend if you use the [Pelican](https://github.com/getpelican/pelican) blog site generator)*
 2. Gets the git revision history
 3. Iterates through that history, prepares the page, screen caps it
 4. Converts images to video
