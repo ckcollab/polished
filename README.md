@@ -145,8 +145,8 @@ class SomeWeirdBehaviorRequired(PelicanBackend):
     @polish(commit_indexes=[15])
     def fix_broken_link(self):
         '''
-        So you committed some broken img reference that is breaking commit #15 (you found this by looking at
-        polished_output/<commit #>.<sha>.png) now let's fix it!
+        So you committed some broken img reference that is breaking commit #15 (you found this
+        by looking at polished_output/<commit #>.<sha>.png) now let's fix it!
         '''
         file_data = open("output/pages/about.html").read()
         html = lxml.html.fromstring()
