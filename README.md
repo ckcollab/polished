@@ -11,14 +11,12 @@ grow, and shrink into place.
 
 
 
-### How does it work?
+### How does polished work?
 
-Once you've installed polished, it works like this:
-
-1. Fire up selected backend (for example, PelicanBackend if you use the [Pelican](https://github.com/getpelican/pelican) blog site generator)
-2. Get the git revision history
-3. Iterate through that history, prepare the page, screen cap it
-4. Convert images to video
+1. Fires up selected backend (for example, PelicanBackend if you use the [Pelican](https://github.com/getpelican/pelican) blog site generator)
+2. Gets the git revision history
+3. Iterates through that history, prepares the page, screen caps it
+4. Converts images to video
 5. OPTIONALLY: If after reviewing the images/video you find bugs, inherit a backend and `@polish` out the kinks so it's a nice smooth video
 
 
