@@ -78,23 +78,31 @@ To expand the behavior, call `polished my/output/index.html --backend my.backend
 
 ### Basic available backends
 
+**SimpleBackend**
+
+The most basic backend, assumes no steps are needed to generate HTML.
+
 ```python
 polished.backends.simple.SimpleBackend
 ```
 
-The most basic backend, assumes no steps are needed to generate HTML.
+
+**PelicanBackend**
+
+For the Pelican blogging system, calls `make html` between screenshots.
 
 ```python
 polished.backends.pelican.PelicanBackend
 ```
 
-For the Pelican blogging system, calls `make html` between screenshots.
+
+**DjangoBackend**
+
+For the Django framework, calls `python manage.py syncdb --migrate`
 
 ```python
 polished.backends.django.DjangoBackend
 ```
-
-For the Django framework, calls "syncdb --migrate"
 
 
 
