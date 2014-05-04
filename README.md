@@ -17,8 +17,9 @@ Once you've installed polished, it works like this:
 
 1. Fires up selected backend (for example, PelicanBackend if you use the [Pelican](https://github.com/getpelican/pelican) blog site generator)
 2. Get the history of your git repo
-3. Iterate through that history, preparing each page and finally screen cap it
-4. If after reviewing the images you find bugs, you can go in and `@polish` out the kinks so it's a nice smooth video
+3. Iterate through that history, preparing each page and then screen capping it
+4. Converts images to video
+5. OPTIONALLY: If after reviewing the images you find bugs, you can go in and `@polish` out the kinks so it's a nice smooth video
 
 
 Getting started
