@@ -7,10 +7,10 @@ from .helpers.timeout import TimeoutError
 
 class SimpleBackend(BaseBackend):
     '''
-    The simple backend assumes the repo is already prepared, i.e. static html
+    The simple backend assumes the repo is already prepared, i.e. static HTML
 
-    An example of a framework that would use this method might be Django, to `python manage.py migrate`
-    and such.
+    An example situation might be if you were making a simple static site for your mum's cleaning service, nothing
+    needs to be generated/cleaned up, the HTML is already there!
     '''
     URL = 'index.html'
 
