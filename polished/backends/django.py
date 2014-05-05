@@ -1,8 +1,9 @@
 
 
+
 # call syncdb --migrate --noinput
-#
-# call_command('syncdb', interactive = False)
+# runserver
+# end the server
 
 class DjangoBackend(object):
     def __init__(self, *args, **kwargs):
