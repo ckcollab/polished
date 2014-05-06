@@ -138,8 +138,12 @@ class SomeWeirdBehaviorRequired(PelicanBackend):
 Use the `@polish` decorator:
 
 ```python
-import lxml
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 from polished.backends import PelicanBackend
+from polished.decorators import polish
 
 class SomeWeirdBehaviorRequired(PelicanBackend):
     def _patch_image_srcs(self):
