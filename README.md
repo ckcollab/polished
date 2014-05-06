@@ -154,7 +154,10 @@ class SomeWeirdBehaviorRequired(PelicanBackend):
             var img_array = document.getElementsByTagName('img');
 
             for(var i=0; i<img_array.length; i++) {
-                var href_replaced = img_array[i].getAttribute('src').replace(/^\/images/, "../images");
+                var href_replaced = img_array[i].getAttribute('src').replace(
+                    /^\/images/,
+                    "../images"
+                );
                 img_array[i].setAttribute("src", href_replaced);
             }
         """)
