@@ -163,7 +163,7 @@ class SomeWeirdBehaviorRequired(PelicanBackend):
         """)
 
     @polish(urls=["output/pages/about.html"], commit_indexes=range(112, 135))
-    def fix_image_links_on_about_me_page(self):
+    def fix_about_me_broken_images(self):
         self._patch_image_srcs()
 
     @polish(urls=["output/pages/resume.html"], commit_indexes=range(68,134))
