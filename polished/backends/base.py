@@ -15,6 +15,9 @@ class BaseBackend(GitMixin, PolisherMixin, VideoMixin, DriverMixin):
     def __init__(self, *args, **kwargs):
         self._remove_files("polished_output", "*.png")
 
+        if not os.path.exists("polished_output/"):
+            os.mkdir("polished_output/")
+
         super(BaseBackend, self).__init__(*args, **kwargs)
 
     def execute(self, url=None):
