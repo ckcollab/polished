@@ -7,7 +7,7 @@ polished
     </a>
 </p>
 
-The goal of polished is to show the awesome progression and amount of tweaks that go into any website. My [resume](http://www.ericcarmichael.com/)
+The goal of polished is to show the awesome progression and amount of tweaks that go into any website. My <a href="http://www.ericcarmichael.com/">resume</a>
 is a good example, dozens of hours of work and tweaking to come up with this pretty basic final product. Showing that
 blood, sweat and hilarious tears in between should be pretty entertaining. Watch pages undulate, stretch, break,
 grow, and shrink into place.
