@@ -19,7 +19,7 @@ setup(
     },
     name="polished",
     packages=find_packages(),
-    version="0.0.8",
+    version="0.0.9",
     author="Eric Carmichael",
     author_email="eric@ckcollab.com",
     description="Generates screenshots of a website based on git history",
