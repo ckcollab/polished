@@ -28,7 +28,7 @@ def main():
     parser.add_argument(
         '--backend',
         help="Set the polished backend to use, i.e. --backend polished.backends.PelicanBackend",
-        default="backends.SimpleBackend"
+        default="polished.backends.SimpleBackend"
     )
 
     args = parser.parse_args()
