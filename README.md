@@ -16,13 +16,13 @@ More explanation available [on my blog](http://www.ericcarmichael.com/polished.h
 
 ### Table of Contents
 
-1. [How does it work?](#how-does-polished-work?)
+1. [How does it work?](#how-does-polished-work)
 2. [Installing](#installing)
 3. [Usage](#usage)
 4. [Configuring](#configuring-behavior)
 5. [Backends](#backends)
-6. [Example Custom Backend](#custom-backend)
-7. [Polishing ugly screenshots](#polishing-certain-commits)
+6. [Custom Backend Example](#custom-backend-example)
+7. [Polishing ugly screenshots](#polishing-ugly-screenshots)
 8. [Known Issues](#known-issues)
 9. [Acknowledgements](#acknowledgements)
 
@@ -124,7 +124,7 @@ polished.backends.django.DjangoBackend
 
 
 
-## Custom backend
+## Custom backend example
 
 Generally, on a simple website these backends will care of you, however you may have to
 inherit them and add custom behavior
@@ -149,7 +149,7 @@ class SomeWeirdBehaviorRequired(PelicanBackend):
 
 
 
-## Polishing certain commits
+## Polishing ugly screenshots
 
 Use the `@polish` decorator:
 
