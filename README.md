@@ -14,6 +14,8 @@ grow, and shrink into place.
 
 More explanation available [on my blog](http://www.ericcarmichael.com/polished.html).
 
+### Table of Contents
+
 1. [How does it work?](#how-does-polished-work?)
 2. [Installing](#installing)
 3. [Usage](#usage)
