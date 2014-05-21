@@ -14,7 +14,18 @@ grow, and shrink into place.
 
 More explanation available [on my blog](http://www.ericcarmichael.com/polished.html).
 
+1. [How does it work?](#how-does-polished-work?)
+2. [Installing](#installing)
+3. [Usage](#usage)
+4. [Configuring](#configuring-behavior)
+5. [Backends](#backends)
+6. [Example Custom Backend](#custom-backend)
+7. [Polishing ugly screenshots](#polishing-certain-commits)
+8. [Known Issues](#known-issues)
+9. [Acknowledgements](#acknowledgements)
 
+
+-----------------------------
 
 
 ### How does polished work?
@@ -25,9 +36,6 @@ More explanation available [on my blog](http://www.ericcarmichael.com/polished.h
 4. Converts images to video
 5. OPTIONALLY: If after reviewing the images/video you find bugs, inherit a backend and `@polish` out the kinks so it's a nice smooth video
 
-
-Getting started
-===============
 
 ### Installing
 
@@ -82,7 +90,7 @@ To expand the behavior, call `polished my/output/index.html --backend my.backend
 
 
 
-### Basic available backends
+### Backends
 
 **SimpleBackend**
 
