@@ -147,9 +147,9 @@ class SomeWeirdBehaviorRequired(PelicanBackend):
 
 
 
-## Polishing ugly screenshots
+## Fixing broken pages during screen capturing
 
-Use the `@polish` decorator:
+Use the `@polish` decorator to fix commits that have broken static links, do not generate properly, etc.
 
 ```python
 from selenium.webdriver.common.by import By
